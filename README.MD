@@ -1,24 +1,24 @@
-# Run
-1. Run docker with prometheus and grafana:
+# Set up
+1. Open a terminal and execute:
 ```
 cd monitoring
 docker-compose up
 ```
-2. Run server
+2. Open another terminal and execute:
 ```
 ./mvnw clean install -DskipTests
-./mvnw spring-boot:run
 ```
-3. Run test to load API
-```
-./mvnw test -Dtest="LoadTest#test"
-```
+3. Go to IDEA and run the server.
+4. Open links to ensure all is running:
+- App: http://localhost:8080/
+- Actuator: http://localhost:8080/actuator/prometheus
+- Prometheus: http://localhost:9090/
+- Grafana: http://localhost:3000/
 
-# Links:
-1. App: http://localhost:8080/
-2. Actuator: http://localhost:8080/actuator/prometheus
-3. Prometheus: http://localhost:9090/
-4. Grafana: http://localhost:3000/
+5. Generate some load:
+- Go to `test/java/com.dem.obs/LoadTest.java`
+- Run `test()`
+- Edit `MSG_LENGTH` to increase/reduce amount of data per request
 
 # Grafana hints:
 RPS:
